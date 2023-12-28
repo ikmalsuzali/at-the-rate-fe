@@ -6,6 +6,11 @@ const props = defineProps({
   },
 });
 
+const router = useRouter();
+const onManageConnectionsClick = () => {
+  router.push({ name: 'pages-user-profile-tab', params: { tab: 'connections' } });
+};
+
 const moreList = [
   {
     title: "Share connections",
@@ -67,12 +72,13 @@ const moreList = [
 
         <VListItem>
           <VListItemTitle>
-            <VBtn block variant="text"> Go to connections </VBtn>
+            <VBtn block variant="text" @click="onManageConnectionsClick"> Manage connections </VBtn>
           </VListItemTitle>
         </VListItem>
       </VList>
     </VCardText>
   </VCard>
+  
 </template>
 
 <style lang="scss" scoped>

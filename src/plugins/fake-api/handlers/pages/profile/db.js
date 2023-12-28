@@ -422,9 +422,9 @@ export const db = {
         projects: '18',
         isConnected: true,
         connections: '129',
-        name: 'Mark Gilbert',
+        name: 'Google',
         designation: 'UI Designer',
-        avatar: avatar1,
+        avatar: google,
         chips: [
           {
             title: 'Figma',
@@ -441,9 +441,9 @@ export const db = {
         projects: '112',
         isConnected: false,
         connections: '1.28k',
-        name: 'Eugenia Parsons',
+        name: 'Facebook',
         designation: 'Developer',
-        avatar: avatar2,
+        avatar: facebook,
         chips: [
           {
             color: 'error',
@@ -455,90 +455,7 @@ export const db = {
           },
         ],
       },
-      {
-        tasks: '1.25k',
-        projects: '32',
-        isConnected: false,
-        connections: '890',
-        name: 'Francis Byrd',
-        designation: 'Developer',
-        avatar: avatar3,
-        chips: [
-          {
-            title: 'HTML',
-            color: 'primary',
-          },
-          {
-            color: 'info',
-            title: 'React',
-          },
-        ],
-      },
-      {
-        tasks: '12.4k',
-        projects: '86',
-        isConnected: false,
-        connections: '890',
-        name: 'Leon Lucas',
-        designation: 'UI/UX Designer',
-        avatar: avatar4,
-        chips: [
-          {
-            title: 'Figma',
-            color: 'secondary',
-          },
-          {
-            title: 'Sketch',
-            color: 'warning',
-          },
-          {
-            color: 'primary',
-            title: 'Photoshop',
-          },
-        ],
-      },
-      {
-        tasks: '23.8k',
-        projects: '244',
-        isConnected: true,
-        connections: '2.14k',
-        name: 'Jayden Rogers',
-        designation: 'Full Stack Developer',
-        avatar: avatar5,
-        chips: [
-          {
-            color: 'info',
-            title: 'React',
-          },
-          {
-            title: 'HTML',
-            color: 'warning',
-          },
-          {
-            color: 'success',
-            title: 'Node.js',
-          },
-        ],
-      },
-      {
-        tasks: '1.28k',
-        projects: '32',
-        isConnected: false,
-        designation: 'SEO',
-        connections: '1.27k',
-        name: 'Jeanette Powell',
-        avatar: avatar6,
-        chips: [
-          {
-            title: 'Analysis',
-            color: 'secondary',
-          },
-          {
-            color: 'success',
-            title: 'Writing',
-          },
-        ],
-      },
+
     ],
   },
   projectTable: [

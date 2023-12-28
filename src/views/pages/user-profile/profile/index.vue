@@ -1,6 +1,5 @@
 <script setup>
 import About from './About.vue';
-import ActivityTimeline from './ActivityTimeline.vue';
 import Connection from './Connection.vue';
 
 const router = useRoute('pages-user-profile-tab')
@@ -37,9 +36,9 @@ watch(router, fetchAboutData, { immediate: true })
         >
           <Connection :connections-data="profileTabData.connections" />
         </VCol>
-        <VCol cols="12">
+        <!-- <VCol cols="12">
           <ActivityTimeline />
-        </VCol>
+        </VCol> -->
 
        
 

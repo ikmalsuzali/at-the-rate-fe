@@ -20,6 +20,11 @@ const props = defineProps({
     required: false,
     default: false,
   },
+  actionCreate: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   actionRemove: {
     type: Boolean,
     required: false,
@@ -44,6 +49,7 @@ const emit = defineEmits([
   'trash',
   'initialLoad',
   'update:loading',
+  'create',
 ])
 
 defineOptions({
@@ -79,6 +85,10 @@ const triggerCollapse = () => {
 const triggerRefresh = () => {
   $loading.value = true
   emit('refresh', stopLoading)
+}
+
+const triggerCreate = () => {
+  emit('create', stopLoading)
 }
 
 // trigger removal
@@ -129,6 +139,17 @@ const triggeredRemove = () => {
                 <VIcon
                   size="20"
                   icon="tabler-refresh"
+                />
+              </IconBtn>
+
+                <!-- 👉 Create button -->
+                <IconBtn
+                v-if="(!(actionRemove || actionCollapsed) || actionCreate) && !noActions"
+                @click="triggerCreate"
+              >
+                <VIcon
+                  size="20"
+                  icon="tabler-pencil"
                 />
               </IconBtn>
 

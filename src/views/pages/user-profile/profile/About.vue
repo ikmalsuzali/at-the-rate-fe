@@ -3,10 +3,19 @@ const props = defineProps({
   data: {
     type: null,
     required: true,
+    crudState: 'view',
   },
 });
 
-const crudState = ref("view");
+const crudState = ref('view');
+crudState.value = props.data.crudState || 'view';
+const router = useRouter();
+
+const onSubmitClick = () => {
+  crudState.value = 'view';
+  // replace tab with profile
+  router.push({ name: 'pages-user-profile-tab', params: { tab: 'profile' } });
+};
 </script>
 
 <template>
@@ -21,27 +30,31 @@ const crudState = ref("view");
       <VCardText>
         <p class="text-xs">ABOUT</p>
         <VList class="card-list text-medium-emphasis">
-          <VListItem v-for="item in props.data.about" :key="item.property">
+          <VListItem>
             <template #prepend>
-              <VIcon :icon="item.icon" size="20" class="me-2" />
+              <VIcon icon="tabler-user" size="20" class="me-2" />
             </template>
             <VListItemTitle>
-              <span class="font-weight-medium me-1">{{ item.property }}:</span>
-              <span>{{ item.value }}</span>
+              <span class="font-weight-medium me-1">Name:</span>
+              <span>{{ item?.value }}</span>
             </VListItemTitle>
           </VListItem>
-        </VList>
-
-        <p class="text-xs mt-5">CONTACTS</p>
-
-        <VList class="card-list text-medium-emphasis">
-          <VListItem v-for="item in props.data.contacts" :key="item.property">
+          <VListItem>
             <template #prepend>
-              <VIcon :icon="item.icon" size="20" class="me-2" />
+              <VIcon icon="tabler-mail" size="20" class="me-2" />
             </template>
             <VListItemTitle>
-              <span class="font-weight-medium me-1">{{ item.property }}:</span>
-              <span>{{ item.value }}</span>
+              <span class="font-weight-medium me-1">Email:</span>
+              <span>{{ item?.value }}</span>
+            </VListItemTitle>
+          </VListItem>
+          <VListItem>
+            <template #prepend>
+              <VIcon icon="tabler-phone" size="20" class="me-2" />
+            </template>
+            <VListItemTitle>
+              <span class="font-weight-medium me-1">Contact No:</span>
+              <span>{{ item?.value }}</span>
             </VListItemTitle>
           </VListItem>
         </VList>
@@ -97,6 +110,7 @@ const crudState = ref("view");
               prepend-inner-icon="tabler-user"
               placeholder="John"
               persistent-placeholder
+              density="compact"
             />
           </VCol>
         </VRow>
@@ -197,7 +211,7 @@ const crudState = ref("view");
       <VCol
         class="flex gap-4"
       >
-        <VBtn class="mb-2" block type="submit" @click="crudState = 'view'">
+        <VBtn class="mb-2" block type="submit" @click="onSubmitClick">
           Submit
         </VBtn>
         <VBtn
@@ -207,7 +221,7 @@ const crudState = ref("view");
           variant="tonal"
           @click="crudState = 'view'"
         >
-          Reset
+          Cancel
         </VBtn>
       </VCol>
     </VRow>
@@ -215,7 +229,7 @@ const crudState = ref("view");
     </div>
   </VCard>
 
-  <VCard>
+  <!-- <VCard>
     <VCardText>
       <p class="text-xs">OVERVIEW</p>
 
@@ -231,7 +245,7 @@ const crudState = ref("view");
         </VListItem>
       </VList>
     </VCardText>
-  </VCard>
+  </VCard> -->
 </template>
 
 <style lang="scss" scoped>

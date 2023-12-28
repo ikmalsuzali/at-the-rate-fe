@@ -2,8 +2,10 @@
 import UserProfileHeader from '@/views/pages/user-profile/UserProfileHeader.vue'
 import UserConnections from '@/views/pages/user-profile/connections/index.vue'
 import UserProfile from '@/views/pages/user-profile/profile/index.vue'
+import NewUserProfile from '@/views/pages/user-profile/profile/new.vue'
 import UserProjects from '@/views/pages/user-profile/projects/index.vue'
 import UserTeam from '@/views/pages/user-profile/team/index.vue'
+
 
 definePage({
   meta: {
@@ -21,6 +23,7 @@ const activeTab = computed({
 
 // tabs
 const tabs = [
+
   {
     title: 'Profile',
     icon: 'tabler-user-check',
@@ -42,9 +45,10 @@ const tabs = [
 
 <template>
   <div>
-    <UserProfileHeader class="mb-5" />
+    <UserProfileHeader v-if="activeTab !== 'new'" class="mb-5" />
 
     <VTabs
+      v-if="activeTab !== 'new'"
       v-model="activeTab"
       class="v-tabs-pill"
     >
@@ -68,6 +72,11 @@ const tabs = [
       class="mt-5 disable-tab-transition"
       :touch="false"
     >
+      <!-- New -->
+      <VWindowItem value="new">
+        <NewUserProfile />
+      </VWindowItem>
+      
       <!-- Profile -->
       <VWindowItem value="profile">
         <UserProfile />

@@ -1,7 +1,8 @@
 export default [
   {
     title: 'Staffs',
-    icon: { icon: 'tabler-file' },
+    icon: { icon: 'tabler-users' },
+    to: 'pages-staff',
     // children: [
     //   {
     //     title: 'User Profile',

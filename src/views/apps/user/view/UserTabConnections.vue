@@ -77,6 +77,8 @@ const socialAccounts = ref([
 </script>
 
 <template>
+  <div>
+
   <VRow>
     <!-- 👉 connected accounts -->
     <VCol cols="12">
@@ -172,4 +174,6 @@ const socialAccounts = ref([
       </VCard>
     </VCol>
   </VRow>
+    </div>
+
 </template>

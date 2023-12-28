@@ -87,9 +87,9 @@ const moreList = [
             </div>
           </div>
 
-          <p class="mt-4 mb-0 clamp-text">
+          <!-- <p class="mt-4 mb-0 clamp-text">
             {{ data.description }}
-          </p>
+          </p> -->
         </VCardText>
 
         <VDivider />
@@ -123,7 +123,10 @@ const moreList = [
           />
 
           <div class="d-flex align-center justify-space-between flex-wrap gap-2 mt-3">
-            <div class="d-flex align-center">
+            <VBtn type="submit" >
+          View Project
+        </VBtn>
+            <!-- <div class="d-flex align-center">
               <div class="v-avatar-group me-2">
                 <VAvatar
                   v-for="avatar in data.avatarGroup"
@@ -135,7 +138,7 @@ const moreList = [
               <span class="text-xs">
                 {{ data.members }}
               </span>
-            </div>
+            </div> -->
 
             <span>
               <VIcon

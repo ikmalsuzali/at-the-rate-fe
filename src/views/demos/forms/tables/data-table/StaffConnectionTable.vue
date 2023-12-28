@@ -4,6 +4,10 @@ import { VDataTable } from "vuetify/labs/VDataTable";
 const search = ref("");
 const clientList = ref([]);
 
+const emit = defineEmits([
+  'edit',
+])
+
 
 // headers
 const headers = [
@@ -11,10 +15,7 @@ const headers = [
     title: "Name",
     key: "product.name",
   },
-  // {
-  //   title: 'DATE',
-  //   key: 'date',
-  // },
+ 
   // {
   //   title: 'CATEGORY',
   //   key: 'product.category',
@@ -30,10 +31,14 @@ const headers = [
     width: "100%"
   },
   {
-    title: "Connections",
-    key: "connection",
-    sortable: false,
+    title: 'Social',
+    key: 'social',
   },
+  // {
+  //   title: "Connections",
+  //   key: "connection",
+  //   sortable: false,
+  // },
   {
     title: "Actions",
     key: "view",
@@ -189,14 +194,16 @@ if (error.value) {
 } else {
   if (data.value) clientList.value = data.value;
 }
+const drawer = ref(false);
 </script>
 
 <template>
   <div>
+   
     <VCardText>
       <VRow>
         <VCol cols="6">
-          <h4 class="text-h4">Client List</h4>
+          <h4 class="text-h4">Staff Connections</h4>
         </VCol>
         <VCol cols="6">
           <AppTextField
@@ -293,21 +300,21 @@ if (error.value) {
       </template>
 
       <!-- Status -->
-      <template #item.connection="{ item }">
+      <template #item.social="{ item }">
         <div class="gr-2">
           <VChip pill class="text-success mr-2">
             <VIcon
             class="mr-1"
               icon="tabler-check"
             />
-            <span>Google</span>
+            <span>Facebook: Read/Write</span>
           </VChip>
           <VChip pill class="text-error mr-2">
             <VIcon
             class="mr-1"
               icon="tabler-x"
             />
-            <span>Meta</span>
+            <span>Google</span>
           </VChip>
           <VChip pill class="text-error mr-2">
             <VIcon
@@ -319,16 +326,38 @@ if (error.value) {
         </div>
       </template>
 
+      <!-- <template #item.connection="{ item }">
+        <div class="gr-2">
+          <VChip pill class="text-success mr-2">
+            <VIcon
+            class="mr-1"
+              icon="tabler-check"
+            />
+            <span>Read</span>
+          </VChip>
+          <VChip pill class="text-error mr-2">
+            <VIcon
+            class="mr-1"
+              icon="tabler-x"
+            />
+            <span>Write</span>
+          </VChip>
+          <VChip pill class="text-error mr-2">
+            <VIcon
+            class="mr-1"
+              icon="tabler-x"
+            />
+            <span>Delete</span>
+          </VChip>
+        </div>
+      </template> -->
+
       <!-- View -->
       <template #item.view="{ item }">
-        <RouterLink
-                :to="{ name: 'pages-user-profile-tab', params: { tab: 'profile' } }"
-                class="text-link font-weight-medium"
-              >
-        <IconBtn>
-          <VIcon icon="tabler-eye" />
+      
+        <IconBtn @click="emit('edit', item)">
+          <VIcon icon="tabler-pencil" />
         </IconBtn>
-        </RouterLink>
       </template>
     </VDataTable>
   </div>
